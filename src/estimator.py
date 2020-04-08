@@ -15,8 +15,8 @@ input_data = {
 def estimator(data):
   currentlyInfectedImpact = get_infected(data['reportedCases'], 10)
   currentlyInfectedServereImpact = get_infected(data['reportedCases'], 50)
-  infectionsByRequestedTimeImpact = get_infections_by_requested_time(currentlyInfectedImpact, 28, data['periodType'])
-  infectionsByRequestedTimeSevereImpact = get_infections_by_requested_time(currentlyInfectedServereImpact, 28, data['periodType'])
+  infectionsByRequestedTimeImpact = get_infections_by_requested_time(currentlyInfectedImpact, data['timeToElapse'], data['periodType'])
+  infectionsByRequestedTimeSevereImpact = get_infections_by_requested_time(currentlyInfectedServereImpact, data['timeToElapse'], data['periodType'])
   impact = {
     "currentlyInfected": currentlyInfectedImpact,
     "infectionsByRequestedTime": infectionsByRequestedTimeImpact,
