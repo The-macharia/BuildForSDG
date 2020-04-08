@@ -27,10 +27,12 @@ def estimator(data):
     "currentlyInfected": currentlyInfectedServereImpact,
     "infectionsByRequestedTime": infectionsByRequestedTimeSevereImpact
   }
-
-  data['impact'] = impact
-  data['severeImpact'] = severeImpact
-  return data
+  
+  return {
+    "data": data,
+    "impact": impact,
+    "severeImpact": severeImpact
+  }
 
 def get_infected(reportedCases, factor):
   return reportedCases * factor
