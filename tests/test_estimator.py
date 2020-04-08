@@ -26,7 +26,7 @@ def test_normalise_days():
 
 def test_get_infections_by_requested_time():
     currentlyInfected = input_data['reportedCases'] * 50
-    assert get_infections_by_requested_time(currentlyInfected, input_data['timeToElapse'], input_data['timeToElapse']) == 17668505600
+    assert get_infections_by_requested_time(currentlyInfected, input_data['timeToElapse']) == 17668505600
 
 def test_get_severe_cases_by_requested_time():
     infections_by_requested_time = 17668505600
