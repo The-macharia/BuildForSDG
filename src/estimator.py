@@ -15,19 +15,18 @@ input_data = {
 def estimator(data):
   currentlyInfectedImpact = get_infected(data['reportedCases'], 10)
   currentlyInfectedServereImpact = get_infected(data['reportedCases'], 50)
-  infectionsByRequestedTimeImpact = get_infections_by_requested_time(currentlyInfectedImpact, 28)
-  infectionsByRequestedTimeSevereImpact = get_infections_by_requested_time(currentlyInfectedServereImpact, 28)
-
+  infectionsByRequestedTimeImpact = get_infections_by_requested_time(currentlyInfectedImpact, 28, data['periodType'])
+  infectionsByRequestedTimeSevereImpact = get_infections_by_requested_time(currentlyInfectedServereImpact, 28, data['periodType'])
   impact = {
     "currentlyInfected": currentlyInfectedImpact,
-    "infectionsByRequestedTime": infectionsByRequestedTimeImpact
+    "infectionsByRequestedTime": infectionsByRequestedTimeImpact,
 
   }
   severeImpact = {
     "currentlyInfected": currentlyInfectedServereImpact,
-    "infectionsByRequestedTime": infectionsByRequestedTimeSevereImpact
+    "infectionsByRequestedTime": infectionsByRequestedTimeSevereImpact,
   }
-  
+
   return {
     "data": data,
     "impact": impact,
@@ -37,7 +36,17 @@ def estimator(data):
 def get_infected(reportedCases, factor):
   return reportedCases * factor
 
-def get_infections_by_requested_time(currentlyInfected, days):
-  factor = int((days / 3))
-  infections = currentlyInfected * (2**factor)
-  return infections
+def get_infections_by_requested_time(currentlyInfected, days, periodType):
+  normalised_days = normalise_days(periodType, days)
+  factor = int((normalised_days / 3))
+  infections_after_time_period = currentlyInfected * (2**factor)
+  return infections_after_time_period
+
+def normalise_days(periodType, value):
+  if periodType == 'weeks':
+    normalised_days = value * 7
+  elif periodType == 'months':
+    normalised_days = value * 30
+  else:
+    normalised_days = value
+  return normalised_days
