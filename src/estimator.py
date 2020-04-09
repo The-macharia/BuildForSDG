@@ -39,11 +39,11 @@ def get_available_beds(servereCases, totalHospitalBeds, average_available=0.35, 
   return available_beds
 
 def get_cases_for_ICU(infectedByRequestedTime, factor=0.05):
-  return factor * infectedByRequestedTime
-
+  cases_for_ICU = int(factor * infectedByRequestedTime)
+  return cases_for_ICU
 def get_cases_requiring_ventilators(infectedByRequestedTime, factor=0.02):
-  return factor * infectedByRequestedTime
-
+  cases_requiring_ventilators = int(factor * infectedByRequestedTime)
+  return cases_requiring_ventilators
 def get_dollars_in_flight(infections_by_requested_time, avg_earners, avg_daily_income, days):
   expected_loss = infections_by_requested_time * avg_earners * avg_daily_income * days  
   return expected_loss
@@ -72,15 +72,16 @@ def estimator(data):
     severeCasesByRequestedTimeImpact,
     data['totalHospitalBeds']
     )
-
   hospitalBedsByRequestedTimeSevereImpact = get_available_beds(
     severeCasesByRequestedTimeSevereImpact,
     data['totalHospitalBeds'])
 
   casesForICUByRequestedTimeImpact = get_cases_for_ICU(infectionsByRequestedTimeImpact)
   casesForICUByRequestedTimeSevereImpact = get_cases_for_ICU(infectionsByRequestedTimeSevereImpact)
+  
   casesForVentilatorsByRequestedTimeImpact = get_cases_requiring_ventilators(infectionsByRequestedTimeImpact)
   casesForVentilatorsByRequestedTimeSevereImpact = get_cases_requiring_ventilators(infectionsByRequestedTimeSevereImpact)
+  
   dollarsInFlightImpact = get_dollars_in_flight(
     infectionsByRequestedTimeImpact, 
     data['region']['avgDailyIncomePopulation'],
@@ -93,6 +94,7 @@ def estimator(data):
     data['region']['avgDailyIncomeInUSD'],
     normalise_days(data['periodType'], data['timeToElapse'])
      )
+  
   impact = {
     "currentlyInfected": currentlyInfectedImpact,
     "infectionsByRequestedTime": infectionsByRequestedTimeImpact,
