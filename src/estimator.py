@@ -39,10 +39,10 @@ def get_available_beds(servereCases, totalHospitalBeds, average_available=0.35, 
   return available_beds
 
 def get_cases_for_ICU(infectedByRequestedTime, factor=0.05):
-  return int(factor * infectedByRequestedTime)
+  return factor * infectedByRequestedTime
 
 def get_cases_requiring_ventilators(infectedByRequestedTime, factor=0.02):
-  return int(factor * infectedByRequestedTime)
+  return factor * infectedByRequestedTime
 
 def get_dollars_in_flight(infections_by_requested_time, avg_earners, avg_daily_income, days):
   expected_loss = infections_by_requested_time * avg_earners * avg_daily_income * days  
