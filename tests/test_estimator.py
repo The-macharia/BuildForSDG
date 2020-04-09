@@ -21,8 +21,17 @@ def test_currently_infected_servere_impact():
     expected_estimate = input_data['reportedCases'] * 50
     assert get_infected(input_data['reportedCases'], 50) == expected_estimate
 
-def test_normalise_days():
+def test_normalise_days_days():
     assert normalise_days(input_data['periodType'], input_data['timeToElapse']) == 58
+
+def test_normalise_days_lowercasing():
+    assert normalise_days("MONTHS", input_data['timeToElapse']) == 1740
+
+def test_normalise_days_weeks():
+    assert normalise_days("weeks", input_data['timeToElapse']) == 406
+
+def test_normalise_days_months():
+    assert normalise_days("months", input_data['timeToElapse']) == 1740
 
 def test_get_infections_by_requested_time():
     currentlyInfected = input_data['reportedCases'] * 50

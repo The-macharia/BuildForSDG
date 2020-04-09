@@ -13,8 +13,6 @@ input_data = {
   "totalHospitalBeds": 1380614
 }
 
-
-
 def get_infected(reportedCases, factor):
   return reportedCases * factor
 
@@ -24,6 +22,7 @@ def get_infections_by_requested_time(currentlyInfected, days):
   return infections_after_time_period
 
 def normalise_days(periodType, value):
+  periodType = periodType.lower()
   normalised_days = 0
   if periodType == 'weeks':
     normalised_days = value * 7
