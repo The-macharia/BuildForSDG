@@ -1,0 +1,19 @@
+<!doctype html>
+<header>
+  <title>{% block title %}{% endblock %} - Covid19Estimator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</header>
+<body>
+  <nav>
+    <h1>Covid19Estimator</h1>
+  </nav>
+  <section class="content">
+    <header>
+      {% block header %}{% endblock %}
+    </header>
+    {% for message in get_flashed_messages() %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </section>
+</body>
