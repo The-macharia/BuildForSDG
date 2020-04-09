@@ -41,12 +41,14 @@ def get_available_beds(servereCases, totalHospitalBeds, average_available=0.35, 
 def get_cases_for_ICU(infectedByRequestedTime, factor=0.05):
   cases_for_ICU = int(factor * infectedByRequestedTime)
   return cases_for_ICU
+
 def get_cases_requiring_ventilators(infectedByRequestedTime, factor=0.02):
   cases_requiring_ventilators = int(factor * infectedByRequestedTime)
   return cases_requiring_ventilators
+
 def get_dollars_in_flight(infections_by_requested_time, avg_earners, avg_daily_income, days):
   expected_loss = infections_by_requested_time * avg_earners * avg_daily_income * days  
-  return expected_loss
+  return round(expected_loss, 2)
 
 def estimator(data):
   currentlyInfectedImpact = get_infected(data['reportedCases'], 10)
