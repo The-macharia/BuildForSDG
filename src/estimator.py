@@ -1,4 +1,3 @@
-import json
 input_data = {
   "region": {
     "name": "Africa",
@@ -114,10 +113,8 @@ def estimator(data):
     "dollarsInFlight": dollarsInFlightSevereImpact
   }
 
-  return json.dumps(
-    {
-      "data": data,
-      "impact": impact,
-      "severeImpact": severeImpact
+  return{
+    "data": data,
+    "impact": impact,
+    "severeImpact": severeImpact
     }
-  ) 
