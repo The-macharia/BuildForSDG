@@ -32,7 +32,7 @@ def normalise_days(periodType, value):
   return normalised_days
 
 def get_severe_cases_by_requested_time(value, factor=0.15):
-  return int(factor * value)
+  return factor * value
 
 def get_available_beds(servereCases, totalHospitalBeds, average_available=0.35, ):
   available_beds = int((average_available * totalHospitalBeds) - servereCases)
@@ -108,14 +108,14 @@ def estimator(data):
     "infectionsByRequestedTime": infectionsByRequestedTimeSevereImpact,
     "severeCasesByRequestedTime": severeCasesByRequestedTimeSevereImpact,
     "hospitalBedsByRequestedTime": hospitalBedsByRequestedTimeSevereImpact,
-    "casesForICUByRequestedTimeImpact": casesForICUByRequestedTimeSevereImpact,
+    "casesForICUByRequestedTime": casesForICUByRequestedTimeSevereImpact,
     "casesForVentilatorsByRequestedTime": casesForVentilatorsByRequestedTimeSevereImpact,
     "dollarsInFlight": dollarsInFlightSevereImpact
   }
   
-  output = {}
-  output["data"] = data
-  output["impact"] = impact
-  output["severeImpact"] = severeImpact
-
+  output = {
+    "data": data,
+    "impact": impact,
+    "severeImpact": severeImpact
+  }
   return output
