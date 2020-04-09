@@ -46,7 +46,7 @@ def test_get_severe_cases_by_requested_time():
 def test_get_available_beds():
     severe_cases = 0.15 * 17668505600
     available_beds = 0.35 * input_data['totalHospitalBeds']
-    bed_deficit = available_beds - severe_cases
+    bed_deficit = int(available_beds - severe_cases)
 
     assert get_available_beds(severe_cases, input_data['totalHospitalBeds']) == bed_deficit
 

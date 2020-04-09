@@ -32,17 +32,17 @@ def normalise_days(periodType, value):
   return normalised_days
 
 def get_severe_cases_by_requested_time(value, factor=0.15):
-  return factor * value
+  return int(factor * value)
 
 def get_available_beds(servereCases, totalHospitalBeds, average_available=0.35, ):
-  available_beds = (average_available * totalHospitalBeds) - servereCases
+  available_beds = int((average_available * totalHospitalBeds) - servereCases)
   return available_beds
 
 def get_cases_for_ICU(infectedByRequestedTime, factor=0.05):
-  return factor * infectedByRequestedTime
+  return int(factor * infectedByRequestedTime)
 
 def get_cases_requiring_ventilators(infectedByRequestedTime, factor=0.02):
-  return factor * infectedByRequestedTime
+  return int(factor * infectedByRequestedTime)
 
 def get_dollars_in_flight(infections_by_requested_time, avg_earners, avg_daily_income, days):
   expected_loss = infections_by_requested_time * avg_earners * avg_daily_income * days  
