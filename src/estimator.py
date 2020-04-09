@@ -41,12 +41,12 @@ def get_available_beds(servereCases, totalHospitalBeds, average_available=0.35):
   return available_beds
 
 def get_cases_for_ICU(infectionsByRequestedTime, factor=0.05):
-  cases_for_ICU = int(factor * infectionsByRequestedTime)
-  return cases_for_ICU
+  cases_for_ICU = factor * infectionsByRequestedTime
+  return int(cases_for_ICU)
 
 def get_cases_requiring_ventilators(infectionsByRequestedTime, factor=0.02):
   cases_requiring_ventilators = factor * infectionsByRequestedTime
-  return cases_requiring_ventilators
+  return int(cases_requiring_ventilators)
 
 def get_dollars_in_flight(infections_by_requested_time, avg_earners, avg_daily_income, days):
   expected_loss = infections_by_requested_time * avg_earners * avg_daily_income * days  
