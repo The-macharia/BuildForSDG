@@ -34,7 +34,7 @@ def normalise_days(periodType, value):
 def get_severe_cases_by_requested_time(value, factor=0.15):
   return factor * value
 
-def get_available_beds(servereCases, totalHospitalBeds, average_available=0.35, ):
+def get_available_beds(servereCases, totalHospitalBeds, average_available=0.35):
   available_beds = int((average_available * totalHospitalBeds) - servereCases)
   return available_beds
 
