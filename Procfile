@@ -1,1 +1,1 @@
-web: gunicorn BuildForSDG:startapp
+web: gunicorn startapp:app
