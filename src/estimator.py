@@ -112,9 +112,10 @@ def estimator(data):
     "casesForVentilatorsByRequestedTime": casesForVentilatorsByRequestedTimeSevereImpact,
     "dollarsInFlight": dollarsInFlightSevereImpact
   }
+  
+  output = {}
+  output["data"] = data
+  output["impact"] = impact
+  output["severeImpact"] = severeImpact
 
-  return{
-    "data": data,
-    "impact": impact,
-    "severeImpact": severeImpact
-    }
+  return output
