@@ -1,12 +1,9 @@
 <!doctype html>
-<header>
+<head>
   <title>{% block title %}{% endblock %} - Covid19Estimator</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</header>
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.4.1/css/bootstrap.min.css') }}">
+</head>
 <body>
-  <nav>
-    <h1>Covid19Estimator</h1>
-  </nav>
   <section class="content">
     <header>
       {% block header %}{% endblock %}
@@ -16,4 +13,9 @@
     {% endfor %}
     {% block content %}{% endblock %}
   </section>
+  {% block scripts %}
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='bootstrap-4.4.1/js/bootstrap.min.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jsonify.js')}}"></script>
+  {% endblock %}
 </body>
