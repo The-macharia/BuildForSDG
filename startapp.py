@@ -12,7 +12,7 @@ def set_timer():
 @app.after_request
 def log(response):
     diff = int((time.time() - g.start) * 1000)
-    log = "{} {} {} {}".format(request.method, request.path, response.status_code, diff)
+    log = f"{request.method} {request.path} {response.status_code} {diff} ms"
     app.logger.info(log)
     return response
 

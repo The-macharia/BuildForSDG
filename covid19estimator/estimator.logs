@@ -1,5 +1,0 @@
-POST /api/v1/on-covid-19/json 200 1
-POST /api/v1/on-covid-19/json 200 1
-POST /api/v1/on-covid-19/xml 200 1
-GET /api/v1/on-covid19/logs 200 28
-GET /static/style.css 404 0

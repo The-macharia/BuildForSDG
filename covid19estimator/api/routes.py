@@ -18,7 +18,7 @@ def logging():
     from covid19estimator.settings import BASE_DIR
     logs = ''
     with open('{}/estimator.logs'.format(BASE_DIR), 'r') as log_file:
-        logs = log_file.read()
+        logs = "\n".join(line for line in log_file.readlines())
 
-    return render_template('logging/logging.html', logs=logs)
+    return logs
     
