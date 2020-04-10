@@ -64,7 +64,7 @@ def test_get_dollars_in_flight():
     avg_earners = input_data['region']['avgDailyIncomePopulation']
     days = input_data['timeToElapse']
 
-    expected_loss = infections_by_requested_time * avg_earners * avg_daily_income * days
+    expected_loss = (infections_by_requested_time * avg_earners * avg_daily_income) // days
 
     assert get_dollars_in_flight(infections_by_requested_time, avg_earners, avg_daily_income, days) == expected_loss
 
