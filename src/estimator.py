@@ -49,8 +49,8 @@ def get_cases_requiring_ventilators(infectionsByRequestedTime, factor=0.02):
   return int(cases_requiring_ventilators)
 
 def get_dollars_in_flight(infections_by_requested_time, avg_earners, avg_daily_income, days):
-  expected_loss = infections_by_requested_time * avg_earners * avg_daily_income * days  
-  return round(expected_loss, 2)
+  expected_loss = (infections_by_requested_time * avg_earners * avg_daily_income) // days  
+  return expected_loss
 
 def estimator(data):
   currentlyInfectedImpact = get_infected(data['reportedCases'], 10)
