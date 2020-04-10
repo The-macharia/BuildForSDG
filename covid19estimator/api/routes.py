@@ -5,7 +5,7 @@ from covid19estimator.utilities.jsonxml import json_to_xml
 from src.estimator import estimator
 
 
-@api_bp.route("/v1/on-covid-19/", defaults={"output_format": None}, methods=('POST',))
+@api_bp.route("/v1/on-covid-19", defaults={"output_format": None}, methods=('POST',))
 @api_bp.route("/v1/on-covid-19/<string:output_format>", methods=('POST',))
 def estimate(output_format):
     output = estimator(request.get_json())
@@ -18,9 +18,7 @@ def logging():
     from covid19estimator.settings import BASE_DIR
     logs = ''
     with open('{}/estimator.logs'.format(BASE_DIR), 'r') as log_file:
-        lines = log_file.readlines()
-        for line in lines:
-            Markup(f"<p>{line}</p>")
+        logs = log_file.read()
 
     return render_template('logging/logging.html', logs=logs)
     

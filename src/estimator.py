@@ -17,7 +17,7 @@ def get_infected(reportedCases, factor):
   return infected
 
 def get_infections_by_requested_time(currentlyInfected, days):
-  factor = int((days / 3))
+  factor = int((days // 3))
   infections_after_time_period = currentlyInfected * (2**factor)
   return infections_after_time_period
 

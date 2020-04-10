@@ -11,11 +11,8 @@ dictConfig({
     'version': 1,
     'formatters': {
         'default':{
-            'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s\n',
+            'format': '[%(asctime)s] - %(name)s - %(levelname)s %(funcName)s:%(lineno)d - %(message)s\n',
         },
-        'request': {
-            'format': '[%(asctime)s]\n',
-        }
     },
     'handlers': {
         'wsgi': {
@@ -24,9 +21,26 @@ dictConfig({
             'formatter': 'default'
         },
         'file': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'estimator.logs'),
         }
     },
+    'root': {
+        'handlers': ['wsgi']
+    },
+    'loggers': {
+        'werkzeug':{
+            'propagate': False
+        },
+        'covid19estimator': {
+            'level': 'INFO',
+            'handlers': ['file']
+        }
+    }
 })
+LOG_ROUTES = [
+    "/api/v1/on-covid19",
+    "/api/v1/on-covid19/json",
+    "/api/v1/on-covid19/xml"
+]
