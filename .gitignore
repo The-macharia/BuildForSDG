@@ -16,6 +16,7 @@ audits/
 .venv/
 venv/
 
+test/
 # __pycache__
 src/__pycache__
 
