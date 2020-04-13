@@ -8,6 +8,10 @@ def get_infections_by_requested_time(currentlyInfected, days):
   return infections_after_time_period
 
 def normalise_days(periodType, value):
+  """
+  This is a helper function to normalise periodtype
+  to always reflect the number of days
+  """
   periodType = periodType.lower()
   normalised_days = 0
   if periodType == 'weeks':
